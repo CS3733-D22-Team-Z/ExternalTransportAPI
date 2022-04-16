@@ -7,6 +7,6 @@ public class Main {
   public static void main(String[] args) {
     DBInitializer init = new DBInitializer();
     init.createTable();
-    App.launch(App.class, args);
+    // App.launch(App.class, args);
   }
 }
