@@ -6,7 +6,12 @@ public class Main {
 
   public static void main(String[] args) {
     DBInitializer init = new DBInitializer();
-    init.createTable();
-    // App.launch(App.class, args);
+    if(init.createTable()) {
+      System.out.println("Success!");
+      // App.launch(App.class, args);
+    } else {
+      System.out.println("Unable to create ExternalTransportAPI table. Aborting.");
+      System.exit(-1);
+    }
   }
 }

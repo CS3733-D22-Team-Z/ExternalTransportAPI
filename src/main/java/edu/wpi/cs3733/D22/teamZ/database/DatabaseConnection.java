@@ -18,7 +18,7 @@ class DatabaseConnection {
     }
   }
 
-  public static Connection getConnection() {
+  static Connection getConnection() {
     return con;
   }
 }
