@@ -25,8 +25,8 @@ public enum TransportMethod {
    * Returns a TransportMethod based on the String provided
    *
    * @param methodStr The String used to base the TransportMethod on
-   * @return The TransportMethod associated with the String provided
-   * or null if no TransportMethod is found
+   * @return The TransportMethod associated with the String provided or null if no TransportMethod
+   *     is found
    */
   public static TransportMethod fromString(String methodStr) {
     for (TransportMethod method : TransportMethod.values()) {

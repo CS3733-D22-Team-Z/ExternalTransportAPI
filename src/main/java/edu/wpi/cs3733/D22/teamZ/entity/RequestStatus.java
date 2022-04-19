@@ -24,8 +24,8 @@ public enum RequestStatus {
    * Returns a RequestStatus based on the String provided
    *
    * @param statusStr The String used to base the RequestStatus on
-   * @return The RequestStatus associated with the String provided
-   * or null if no RequestStatus is found
+   * @return The RequestStatus associated with the String provided or null if no RequestStatus is
+   *     found
    */
   public static RequestStatus fromString(String statusStr) {
     for (RequestStatus status : RequestStatus.values()) {

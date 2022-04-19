@@ -188,9 +188,7 @@ class ExternalTransportDAOImpl {
     // Update all elements that already exist
     {
       List<ExternalTransportRequest> commonObjects =
-          importedRequests.stream()
-              .filter(databaseRequests::contains)
-              .collect(Collectors.toList());
+          importedRequests.stream().filter(databaseRequests::contains).collect(Collectors.toList());
 
       boolean success = true;
       for (ExternalTransportRequest request : commonObjects) {
@@ -233,7 +231,9 @@ class ExternalTransportDAOImpl {
     do {
       String idNum = Integer.toString(rng.nextInt(Integer.MAX_VALUE));
       generatedID = "REQ" + idNum;
-    } while (getExternalTransportRequestByID(generatedID) == null);
+      ExternalTransportRequest temp = getExternalTransportRequestByID(generatedID);
+      System.out.println("Thing");
+    } while (getExternalTransportRequestByID(generatedID) != null);
 
     return generatedID;
   }
@@ -241,7 +241,7 @@ class ExternalTransportDAOImpl {
   private void reloadFromList(List<ExternalTransportRequest> requestList) {
     try {
       Statement stmt = connection.createStatement();
-      //Clear all data
+      // Clear all data
       stmt.execute("DELETE FROM EXTERNALTRANSPORTREQUEST");
     } catch (SQLException e) {
       // This should never happen

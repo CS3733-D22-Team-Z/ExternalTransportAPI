@@ -25,7 +25,7 @@ public class DBInitializer {
     try {
       stmt.execute("DROP TABLE ExternalTransportRequest");
     } catch (SQLException e) {
-      //Table already does not exist
+      // Table already does not exist
     }
 
     try {

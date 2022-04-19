@@ -1,20 +1,25 @@
 package edu.wpi.cs3733.D22.teamZ.database;
 
+import edu.wpi.cs3733.D22.teamZ.App;
 import edu.wpi.cs3733.D22.teamZ.entity.ExternalTransportRequest;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import lombok.NonNull;
 
-public class FacadeDAO {
-  private static final FacadeDAO instance = new FacadeDAO();
+public class ExternalPatientTransportAPI {
+  private static final ExternalPatientTransportAPI instance = new ExternalPatientTransportAPI();
+
+  private static ArrayList<Integer> runArgsInts;
+  private static ArrayList<String> runArgsStrings;
 
   private final ExternalTransportDAOImpl externalTransportDAO;
 
-  public static FacadeDAO getInstance() {
+  public static ExternalPatientTransportAPI getInstance() {
     return instance;
   }
 
-  private FacadeDAO() {
+  private ExternalPatientTransportAPI() {
     externalTransportDAO = new ExternalTransportDAOImpl();
   }
 
@@ -48,5 +53,41 @@ public class FacadeDAO {
 
   public String getNewUniqueExternalTransportID() {
     return externalTransportDAO.getNewUniqueExternalTransportID();
+  }
+
+  public File getDefaultLocationCSVPath() {
+    return new File(
+        System.getProperty("user.dir")
+            + System.getProperty("file.separator")
+            + "ExternalPatientTransportation.csv");
+  }
+
+  public void run(
+      int xCoord,
+      int yCoord,
+      int windowWidth,
+      int windowLength,
+      String cssPath,
+      String destLocationID,
+      String originLocationID) {
+    runArgsInts = new ArrayList<Integer>();
+    runArgsInts.add(xCoord);
+    runArgsInts.add(yCoord);
+    runArgsInts.add(windowWidth);
+    runArgsInts.add(windowLength);
+    runArgsStrings = new ArrayList<String>();
+    runArgsStrings.add(cssPath);
+    runArgsStrings.add(destLocationID);
+    runArgsStrings.add(originLocationID);
+
+    App.launch(App.class, "");
+  }
+
+  public static ArrayList<Integer> getRunArgsInts() {
+    return runArgsInts;
+  }
+
+  public static ArrayList<String> getRunArgsStrings() {
+    return runArgsStrings;
   }
 }
