@@ -87,22 +87,31 @@ public class ExternalPatientTransportationRequestController implements Initializ
     LocalDate departureDate = departureDateField.getValue();
     TransportMethod transportMethod =
         TransportMethod.fromString(transportMethodComboBox.getSelectionModel().getSelectedItem());
-    assert transportMethod != null;
-    ExternalTransportRequest temp =
-        new ExternalTransportRequest(
-            requestID,
-            requestStatus,
-            issuer,
-            handler,
-            patientID,
-            destination,
-            departureDate,
-            transportMethod);
-    if (externalPatientTransportAPI.addExternalTransportRequest(temp)) {
-      System.out.println("successful addition of patient transport request");
-      successfulSubmitLabel.setVisible(true);
+
+    if (departureDate == null) {
+      successfulSubmitLabel.setVisible(false);
+      errorSavingLabel.setVisible(true);
     } else {
-      System.out.println("failed addition of patient transport request");
+      assert transportMethod != null;
+      ExternalTransportRequest temp =
+          new ExternalTransportRequest(
+              requestID,
+              requestStatus,
+              issuer,
+              handler,
+              patientID,
+              destination,
+              departureDate,
+              transportMethod);
+      if (externalPatientTransportAPI.addExternalTransportRequest(temp)) {
+        // System.out.println("successful addition of patient transport request");
+        successfulSubmitLabel.setVisible(true);
+        errorSavingLabel.setVisible(false);
+      } else {
+        // System.out.println("failed addition of patient transport request");
+        successfulSubmitLabel.setVisible(false);
+        errorSavingLabel.setVisible(true);
+      }
     }
   }
 
@@ -114,7 +123,9 @@ public class ExternalPatientTransportationRequestController implements Initializ
     destinationField.clear();
     transportMethodComboBox.getSelectionModel().clearSelection();
     departureDateField.setValue(null);
+
     successfulSubmitLabel.setVisible(false);
+    errorSavingLabel.setVisible(false);
   }
 
   @FXML
@@ -128,6 +139,9 @@ public class ExternalPatientTransportationRequestController implements Initializ
     } else {
       submitButton.setDisable(true);
     }
+
+    successfulSubmitLabel.setVisible(false);
+    errorSavingLabel.setVisible(false);
   }
 
   public void onRequestListButtonClicked(ActionEvent actionEvent) throws IOException {
