@@ -58,7 +58,7 @@ public class ExternalPatientTransportationRequestController implements Initializ
     errorSavingLabel.setVisible(false);
     successfulSubmitLabel.setVisible(false);
     warningBackground.setVisible(false);
-    submitButton.setDisable(false);
+    submitButton.setDisable(true);
     transportMethodComboBox.setItems(
         FXCollections.observableArrayList("HELICOPTER", "AMBULANCE", "PATIENTCAR", "PLANE"));
 
