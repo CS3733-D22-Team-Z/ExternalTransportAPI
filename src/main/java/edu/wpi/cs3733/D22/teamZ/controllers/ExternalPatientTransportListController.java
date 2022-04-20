@@ -1,7 +1,7 @@
 package edu.wpi.cs3733.D22.teamZ.controllers;
 
 import edu.wpi.cs3733.D22.teamZ.App;
-import edu.wpi.cs3733.D22.teamZ.database.ExternalPatientTransportAPI;
+import edu.wpi.cs3733.D22.teamZ.database.FacadeDAO;
 import edu.wpi.cs3733.D22.teamZ.entity.ExternalTransportRequest;
 import edu.wpi.cs3733.D22.teamZ.entity.RequestStatus;
 import edu.wpi.cs3733.D22.teamZ.entity.TransportMethod;
@@ -46,7 +46,7 @@ public class ExternalPatientTransportListController implements Initializable {
   private final String toLabServiceRequestListURL =
       "edu/wpi/cs3733/D22/teamZ/views/LabServiceRequest.fxml";
 
-  private ExternalPatientTransportAPI externalPatientTransportAPI;
+  private FacadeDAO facadeDAO;
 
   @FXML
   private void toLabServiceRequest(ActionEvent event) throws IOException {
@@ -63,7 +63,7 @@ public class ExternalPatientTransportListController implements Initializable {
   // loadDataFromDatabase when button loadData is clicked
   @FXML
   public void initialize(URL location, ResourceBundle resources) {
-    externalPatientTransportAPI = ExternalPatientTransportAPI.getInstance();
+    facadeDAO = FacadeDAO.getInstance();
 
     System.out.println("loading data");
     externalTransportRequestTable.getItems().clear();
@@ -73,7 +73,7 @@ public class ExternalPatientTransportListController implements Initializable {
 
   public void refreshTable() {
     ObservableList<ExternalTransportRequest> data =
-        FXCollections.observableList(externalPatientTransportAPI.getAllExternalTransportRequests());
+        FXCollections.observableList(facadeDAO.getAllExternalTransportRequests());
 
     // link columnNames to data
     patientID.setCellValueFactory(
@@ -106,7 +106,7 @@ public class ExternalPatientTransportListController implements Initializable {
         new FileChooser.ExtensionFilter("CSV Files (*.csv)", "*.csv");
     fileChooser.getExtensionFilters().add(extFilter);
 
-    File defaultFile = externalPatientTransportAPI.getDefaultLocationCSVPath();
+    File defaultFile = facadeDAO.getDefaultLocationCSVPath();
 
     if (defaultFile.isDirectory()) {
       fileChooser.setInitialDirectory(defaultFile);
@@ -118,7 +118,7 @@ public class ExternalPatientTransportListController implements Initializable {
     File file = fileChooser.showSaveDialog(stage);
 
     if (file != null) {
-      externalPatientTransportAPI.exportExternalTransportsToCSV(file);
+      facadeDAO.exportExternalTransportsToCSV(file);
     }
   }
 
@@ -129,9 +129,9 @@ public class ExternalPatientTransportListController implements Initializable {
     FileChooser.ExtensionFilter extFilter =
         new FileChooser.ExtensionFilter("CSV Files (*.csv)", "*.csv");
     fileChooser.getExtensionFilters().add(extFilter);
-    fileChooser.setInitialDirectory(externalPatientTransportAPI.getDefaultLocationCSVPath());
+    fileChooser.setInitialDirectory(facadeDAO.getDefaultLocationCSVPath());
 
-    File defaultFile = externalPatientTransportAPI.getDefaultLocationCSVPath();
+    File defaultFile = facadeDAO.getDefaultLocationCSVPath();
     if (defaultFile.isDirectory()) {
       fileChooser.setInitialDirectory(defaultFile);
     } else {
@@ -141,7 +141,7 @@ public class ExternalPatientTransportListController implements Initializable {
 
     File file = fileChooser.showOpenDialog(stage);
 
-    if (externalPatientTransportAPI.importExternalTransportsFromCSV(file)) {
+    if (facadeDAO.importExternalTransportsFromCSV(file)) {
       System.out.println("Successful Import");
       refreshTable();
     } else {

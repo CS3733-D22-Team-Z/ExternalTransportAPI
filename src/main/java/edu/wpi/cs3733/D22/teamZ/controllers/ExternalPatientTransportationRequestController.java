@@ -1,7 +1,7 @@
 package edu.wpi.cs3733.D22.teamZ.controllers;
 
 import edu.wpi.cs3733.D22.teamZ.App;
-import edu.wpi.cs3733.D22.teamZ.database.ExternalPatientTransportAPI;
+import edu.wpi.cs3733.D22.teamZ.database.FacadeDAO;
 import edu.wpi.cs3733.D22.teamZ.entity.ExternalTransportRequest;
 import edu.wpi.cs3733.D22.teamZ.entity.RequestStatus;
 import edu.wpi.cs3733.D22.teamZ.entity.TransportMethod;
@@ -24,6 +24,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import lombok.NonNull;
+import lombok.Setter;
 
 public class ExternalPatientTransportationRequestController implements Initializable {
   @FXML private Label handlerIDLabel;
@@ -49,6 +51,8 @@ public class ExternalPatientTransportationRequestController implements Initializ
   private final String toLandingPageURL =
       "edu/wpi/cs3733/D22/teamZ/views/ExternalPatientTransportListController.fxml";
 
+  @Setter @NonNull private static String destinationFieldString;
+
   @FXML
   public void initialize(URL location, ResourceBundle resources) {
     // menuName = "External Patient Transportation Request";
@@ -58,21 +62,17 @@ public class ExternalPatientTransportationRequestController implements Initializ
     transportMethodComboBox.setItems(
         FXCollections.observableArrayList("HELICOPTER", "AMBULANCE", "PATIENTCAR", "PLANE"));
 
-    if (!ExternalPatientTransportAPI.getRunArgsStrings().isEmpty()) {
-      destinationField.setText(ExternalPatientTransportAPI.getRunArgsStrings().get(1));
-    }
+    destinationField.setText(destinationFieldString);
   }
 
   @FXML
   protected void onSubmitButtonClicked(ActionEvent event) {
-    ExternalPatientTransportAPI externalPatientTransportAPI =
-        ExternalPatientTransportAPI.getInstance();
-    List<ExternalTransportRequest> serviceRequestList =
-        externalPatientTransportAPI.getAllExternalTransportRequests();
+    FacadeDAO facadeDAO = FacadeDAO.getInstance();
+    List<ExternalTransportRequest> serviceRequestList = facadeDAO.getAllExternalTransportRequests();
     RequestStatus requestStatus = RequestStatus.PROCESSING;
 
     // Create entities for submission
-    String requestID = externalPatientTransportAPI.getNewUniqueExternalTransportID();
+    String requestID = facadeDAO.getNewUniqueExternalTransportID();
     String issuer = issuerIDField.getText();
 
     // String handler = handlerIDField.getText();
@@ -103,7 +103,7 @@ public class ExternalPatientTransportationRequestController implements Initializ
               destination,
               departureDate,
               transportMethod);
-      if (externalPatientTransportAPI.addExternalTransportRequest(temp)) {
+      if (facadeDAO.addExternalTransportRequest(temp)) {
         // System.out.println("successful addition of patient transport request");
         successfulSubmitLabel.setVisible(true);
         errorSavingLabel.setVisible(false);
