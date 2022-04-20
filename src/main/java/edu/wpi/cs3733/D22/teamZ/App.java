@@ -37,6 +37,10 @@ public class App extends Application {
     primaryStage.setY(runArgsInts.get(1));
     // primaryStage.setHeight(runArgsInts.get(2));
     // primaryStage.setWidth(runArgsInts.get(3));
+    primaryStage.setHeight(450);
+    primaryStage.setWidth(800);
+
+    primaryStage.setResizable(false);
 
     // scene.getStylesheets().clear();
     cssPath = App.class.getResource(runArgsStrings.get(0)).toExternalForm();
