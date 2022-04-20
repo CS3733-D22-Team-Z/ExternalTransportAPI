@@ -69,7 +69,7 @@ public class API {
         App.staticStart(new Stage());
       } catch (IOException ex) {
         System.out.println("API IOException on start");
-        ex.printStackTrace();
+        throw new ServiceException("The css path given could not be found");
       }
     }
   }
