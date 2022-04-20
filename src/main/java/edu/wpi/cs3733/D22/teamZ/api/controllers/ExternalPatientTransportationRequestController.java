@@ -1,10 +1,10 @@
-package edu.wpi.cs3733.D22.teamZ.controllers;
+package edu.wpi.cs3733.D22.teamZ.api.controllers;
 
-import edu.wpi.cs3733.D22.teamZ.App;
-import edu.wpi.cs3733.D22.teamZ.database.FacadeDAO;
-import edu.wpi.cs3733.D22.teamZ.entity.ExternalTransportRequest;
-import edu.wpi.cs3733.D22.teamZ.entity.RequestStatus;
-import edu.wpi.cs3733.D22.teamZ.entity.TransportMethod;
+import edu.wpi.cs3733.D22.teamZ.api.*;
+import edu.wpi.cs3733.D22.teamZ.api.database.FacadeDAO;
+import edu.wpi.cs3733.D22.teamZ.api.entity.ExternalTransportRequest;
+import edu.wpi.cs3733.D22.teamZ.api.entity.RequestStatus;
+import edu.wpi.cs3733.D22.teamZ.api.entity.TransportMethod;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXDatePicker;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -48,8 +48,10 @@ public class ExternalPatientTransportationRequestController implements Initializ
   @FXML private ComboBox<String> transportMethodComboBox;
   @FXML private MFXButton requestListButton;
 
+  FacadeDAO facadeDAO = FacadeDAO.getInstance();
+
   private final String toLandingPageURL =
-      "edu/wpi/cs3733/D22/teamZ/views/ExternalPatientTransportListController.fxml";
+      "edu/wpi/cs3733/D22/teamZ/api/views/ExternalPatientTransportListController.fxml";
 
   @Setter @NonNull private static String destinationFieldString;
 
@@ -63,11 +65,13 @@ public class ExternalPatientTransportationRequestController implements Initializ
         FXCollections.observableArrayList("HELICOPTER", "AMBULANCE", "PATIENTCAR", "PLANE"));
 
     destinationField.setText(destinationFieldString);
+
+    transportMethodComboBox.valueProperty().addListener(e -> validateButton());
+    departureDateField.valueProperty().addListener(e -> validateButton());
   }
 
   @FXML
   protected void onSubmitButtonClicked(ActionEvent event) {
-    FacadeDAO facadeDAO = FacadeDAO.getInstance();
     List<ExternalTransportRequest> serviceRequestList = facadeDAO.getAllExternalTransportRequests();
     RequestStatus requestStatus = RequestStatus.PROCESSING;
 
@@ -123,6 +127,8 @@ public class ExternalPatientTransportationRequestController implements Initializ
     destinationField.clear();
     transportMethodComboBox.getSelectionModel().clearSelection();
     departureDateField.setValue(null);
+
+    submitButton.setDisable(true);
 
     successfulSubmitLabel.setVisible(false);
     errorSavingLabel.setVisible(false);

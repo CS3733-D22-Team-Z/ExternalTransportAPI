@@ -1,7 +1,8 @@
-package edu.wpi.cs3733.D22.teamZ;
+package edu.wpi.cs3733.D22.teamZ.api;
 
-import edu.wpi.cs3733.D22.teamZ.controllers.ExternalPatientTransportationRequestController;
+import edu.wpi.cs3733.D22.teamZ.api.controllers.ExternalPatientTransportationRequestController;
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -27,6 +28,15 @@ public class App extends Application {
 
   @Override
   public void start(Stage primaryStage) throws IOException {
+    staticStart(primaryStage);
+  }
+
+  @Override
+  public void stop() {
+    log.info("Shutting Down");
+  }
+
+  public static void staticStart(Stage primaryStage) throws IOException {
     FXMLLoader loader =
         new FXMLLoader(Main.class.getResource("views/ExternalPatientTransportRequestList.fxml"));
     AnchorPane root = loader.load();
@@ -43,20 +53,20 @@ public class App extends Application {
     primaryStage.setResizable(false);
 
     // scene.getStylesheets().clear();
-    cssPath = App.class.getResource(runArgsStrings.get(0)).toExternalForm();
+    URL cssURL = App.class.getResource(runArgsStrings.get(0));
+    if (cssURL != null) {
+      cssPath = App.class.getResource(runArgsStrings.get(0)).toExternalForm();
+    } else {
+      throw new IOException();
+    }
     scene.getStylesheets().add(cssPath);
 
     String destinationFieldString = (runArgsStrings.get(1) == null) ? "" : runArgsStrings.get(1);
     ExternalPatientTransportationRequestController.setDestinationFieldString(
         destinationFieldString);
 
-    primaryStage.getIcons().add(new Image("edu/wpi/cs3733/D22/teamZ/images/Hospital-Logo.png"));
+    primaryStage.getIcons().add(new Image("edu/wpi/cs3733/D22/teamZ/api/images/Hospital-Logo.png"));
     primaryStage.setScene(scene);
     primaryStage.show();
-  }
-
-  @Override
-  public void stop() {
-    log.info("Shutting Down");
   }
 }

@@ -4,13 +4,6 @@
     -fx-background-color: #E5E5E5;
 }
 
-.header {
-    -fx-font-family: 'SansSerif';
-    -fx-font-weight: 700;
-    -fx-font-size: 14pt;
-    -fx-text-fill: #000000;
-}
-
 .object-header {
     -fx-font-family: 'Palatino Linotype';
     -fx-font-weight: 700;
@@ -69,7 +62,7 @@
     -fx-text-fill: #FFFFFF;
 
     -fx-background-radius: 2px;
-    -fx-background-color: #9D9D9D;
+    -fx-background-color: #0067B1;
 }
 
 .reset-button {
