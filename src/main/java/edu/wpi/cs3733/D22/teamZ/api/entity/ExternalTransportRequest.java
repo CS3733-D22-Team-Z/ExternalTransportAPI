@@ -10,7 +10,7 @@ public class ExternalTransportRequest {
   @EqualsAndHashCode.Include @NonNull private final String requestID;
   @NonNull @Setter private RequestStatus status;
   @NonNull private final String issuerID;
-  @NonNull private String handlerID;
+  @NonNull @Setter private String handlerID;
   @NonNull private final String patientID;
   @NonNull @Setter private String transportDestination;
   @NonNull @Setter private LocalDate departureDate;
@@ -26,9 +26,9 @@ public class ExternalTransportRequest {
   public void setHandlerID(@NonNull String handlerID) {
     this.handlerID = handlerID;
     if (handlerID.equals("")) {
-      this.status = edu.wpi.cs3733.D22.teamZ.api.entity.RequestStatus.UNASSIGNED;
+      this.status = RequestStatus.UNASSIGNED;
     } else {
-      this.status = edu.wpi.cs3733.D22.teamZ.api.entity.RequestStatus.PROCESSING;
+      this.status = RequestStatus.PROCESSING;
     }
   }
 }

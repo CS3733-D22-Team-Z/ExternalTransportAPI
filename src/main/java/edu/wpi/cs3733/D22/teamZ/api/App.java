@@ -54,7 +54,7 @@ public class App extends Application {
 
     // scene.getStylesheets().clear();
     URL cssURL = App.class.getResource(runArgsStrings.get(0));
-    if(cssURL != null) {
+    if (cssURL != null) {
       cssPath = App.class.getResource(runArgsStrings.get(0)).toExternalForm();
     } else {
       throw new IOException();

@@ -142,10 +142,10 @@ public class ExternalPatientTransportListController implements Initializable {
     File file = fileChooser.showOpenDialog(stage);
 
     if (facadeDAO.importExternalTransportsFromCSV(file)) {
-      System.out.println("Successful Import");
+      //System.out.println("Successful Import");
       refreshTable();
     } else {
-      System.out.println("Import failed");
+      //System.out.println("Import failed");
     }
   }
 
