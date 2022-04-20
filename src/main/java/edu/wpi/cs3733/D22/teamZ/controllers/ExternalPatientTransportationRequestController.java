@@ -10,7 +10,6 @@ import io.github.palexdev.materialfx.controls.MFXDatePicker;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -128,9 +127,8 @@ public class ExternalPatientTransportationRequestController implements Initializ
     if (!issuerIDField.getText().trim().isEmpty()
         && !patientIDField.getText().trim().isEmpty()
         && !destinationField.getText().trim().isEmpty()
-        // && !departureTimeField.getText().trim().isEmpty()
         && !departureDateField.getText().trim().isEmpty()
-        && transportMethodComboBox.getButtonCell().isSelected()) {
+        && !(transportMethodComboBox.getSelectionModel().getSelectedItem() == null)) {
       submitButton.setDisable(false);
     }
   }
