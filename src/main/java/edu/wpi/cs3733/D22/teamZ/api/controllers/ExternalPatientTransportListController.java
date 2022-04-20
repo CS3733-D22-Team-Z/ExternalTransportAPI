@@ -65,7 +65,7 @@ public class ExternalPatientTransportListController implements Initializable {
   public void initialize(URL location, ResourceBundle resources) {
     facadeDAO = FacadeDAO.getInstance();
 
-    System.out.println("loading data");
+    // System.out.println("loading data");
     externalTransportRequestTable.getItems().clear();
 
     refreshTable();
@@ -142,10 +142,10 @@ public class ExternalPatientTransportListController implements Initializable {
     File file = fileChooser.showOpenDialog(stage);
 
     if (facadeDAO.importExternalTransportsFromCSV(file)) {
-      //System.out.println("Successful Import");
+      // System.out.println("Successful Import");
       refreshTable();
     } else {
-      //System.out.println("Import failed");
+      // System.out.println("Import failed");
     }
   }
 

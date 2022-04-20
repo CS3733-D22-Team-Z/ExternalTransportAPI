@@ -232,7 +232,7 @@ class ExternalTransportDAOImpl {
       String idNum = Integer.toString(rng.nextInt(Integer.MAX_VALUE));
       generatedID = "REQ" + idNum;
       ExternalTransportRequest temp = getExternalTransportRequestByID(generatedID);
-      System.out.println("Thing");
+      // System.out.println("Thing");
     } while (getExternalTransportRequestByID(generatedID) != null);
 
     return generatedID;

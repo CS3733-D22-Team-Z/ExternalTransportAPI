@@ -48,6 +48,8 @@ public class ExternalPatientTransportationRequestController implements Initializ
   @FXML private ComboBox<String> transportMethodComboBox;
   @FXML private MFXButton requestListButton;
 
+  FacadeDAO facadeDAO = FacadeDAO.getInstance();
+
   private final String toLandingPageURL =
       "edu/wpi/cs3733/D22/teamZ/api/views/ExternalPatientTransportListController.fxml";
 
@@ -67,7 +69,6 @@ public class ExternalPatientTransportationRequestController implements Initializ
 
   @FXML
   protected void onSubmitButtonClicked(ActionEvent event) {
-    FacadeDAO facadeDAO = FacadeDAO.getInstance();
     List<ExternalTransportRequest> serviceRequestList = facadeDAO.getAllExternalTransportRequests();
     RequestStatus requestStatus = RequestStatus.PROCESSING;
 
@@ -123,6 +124,8 @@ public class ExternalPatientTransportationRequestController implements Initializ
     destinationField.clear();
     transportMethodComboBox.getSelectionModel().clearSelection();
     departureDateField.setValue(null);
+
+    submitButton.setDisable(true);
 
     successfulSubmitLabel.setVisible(false);
     errorSavingLabel.setVisible(false);
