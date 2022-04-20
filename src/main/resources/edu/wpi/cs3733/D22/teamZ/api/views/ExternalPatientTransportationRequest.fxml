@@ -38,7 +38,7 @@
         <Label id="rejected" fx:id="errorSavingLabel" layoutX="18.0" layoutY="373.0" prefHeight="17.0" prefWidth="379.0" styleClass="error-label" text="Error saving request" />
         <Label id="confirmed" fx:id="successfulSubmitLabel" layoutX="18.0" layoutY="373.0" prefHeight="17.0" prefWidth="379.0" styleClass="success-label" text="Successfully submitted lab request!" />
       <MFXTextField fx:id="destinationField" floatMode="DISABLED" layoutX="22.0" layoutY="209.0" onKeyReleased="#validateButton" prefHeight="27.0" prefWidth="149.0" promptText="Enter Destination" />
-      <MFXDatePicker fx:id="departureDateField" layoutX="322.0" layoutY="141.0" prefHeight="0.0" prefWidth="150.0" />
+      <MFXDatePicker fx:id="departureDateField" layoutX="322.0" layoutY="141.0" onAction="#validateButton" prefHeight="0.0" prefWidth="150.0" />
       <Label fx:id="issuerIDLabel" layoutX="325.0" layoutY="185.0" prefHeight="17.0" prefWidth="158.0" styleClass="form-header" text="Employee Issuer" />
       <MFXTextField fx:id="issuerIDField" floatMode="DISABLED" layoutX="323.0" layoutY="207.0" onKeyReleased="#validateButton" prefHeight="27.0" prefWidth="149.0" promptText="Enter Employee ID" />
       <Label fx:id="handlerIDLabel" layoutX="323.0" layoutY="255.0" prefHeight="17.0" prefWidth="158.0" styleClass="form-header" text="Employee Handler" />

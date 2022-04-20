@@ -65,6 +65,9 @@ public class ExternalPatientTransportationRequestController implements Initializ
         FXCollections.observableArrayList("HELICOPTER", "AMBULANCE", "PATIENTCAR", "PLANE"));
 
     destinationField.setText(destinationFieldString);
+
+    transportMethodComboBox.valueProperty().addListener(e -> validateButton());
+    departureDateField.valueProperty().addListener(e -> validateButton());
   }
 
   @FXML
