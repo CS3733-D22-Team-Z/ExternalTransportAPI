@@ -8,7 +8,6 @@ import edu.wpi.cs3733.D22.teamZ.entity.TransportMethod;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXDatePicker;
 import io.github.palexdev.materialfx.controls.MFXTextField;
-import io.github.palexdev.materialfx.controls.legacy.MFXLegacyComboBox;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -23,23 +22,31 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class ExternalPatientTransportationRequestController implements Initializable {
+  @FXML private Label handlerIDLabel;
+  @FXML private Label issuerIDLabel;
+  @FXML private Label departureDateLabel;
+  @FXML private Label destinationLabel;
+  @FXML private Label patientIdLabel;
+  @FXML private Label transportMethodLabel;
+  @FXML private Label descriptionLabel;
+  @FXML private Label titleLabel;
   @FXML private Button submitButton;
   @FXML private Button resetButton;
   @FXML private MFXTextField patientIDField;
   @FXML private MFXTextField destinationField;
-  // @FXML private MFXTextField departureTimeField;
   @FXML private MFXDatePicker departureDateField;
   @FXML private Label successfulSubmitLabel;
   @FXML private Label errorSavingLabel;
   @FXML private Rectangle warningBackground;
   @FXML private MFXTextField issuerIDField;
   @FXML private MFXTextField handlerIDField;
-  @FXML private MFXLegacyComboBox<String> transportMethodCBox;
+  @FXML private ComboBox<String> transportMethodComboBox;
   @FXML private MFXButton requestListButton;
 
   private final String toLandingPageURL =
@@ -52,10 +59,10 @@ public class ExternalPatientTransportationRequestController implements Initializ
     successfulSubmitLabel.setVisible(false);
     warningBackground.setVisible(false);
     submitButton.setDisable(false);
-    transportMethodCBox.setItems(
+    transportMethodComboBox.setItems(
         FXCollections.observableArrayList("HELICOPTER", "AMBULANCE", "PATIENTCAR", "PLANE"));
 
-    if (!ExternalPatientTransportAPI.getRunArgsStrings().get(1).isEmpty()) {
+    if (!ExternalPatientTransportAPI.getRunArgsStrings().isEmpty()) {
       destinationField.setText(ExternalPatientTransportAPI.getRunArgsStrings().get(1));
     }
   }
@@ -83,7 +90,7 @@ public class ExternalPatientTransportationRequestController implements Initializ
     String destination = destinationField.getText();
     LocalDate departureDate = departureDateField.getValue();
     TransportMethod transportMethod =
-        TransportMethod.fromString(transportMethodCBox.getSelectionModel().getSelectedItem());
+        TransportMethod.fromString(transportMethodComboBox.getSelectionModel().getSelectedItem());
     ExternalTransportRequest temp =
         new ExternalTransportRequest(
             requestID,
@@ -109,7 +116,7 @@ public class ExternalPatientTransportationRequestController implements Initializ
     handlerIDField.clear();
     patientIDField.clear();
     destinationField.clear();
-    transportMethodCBox.getSelectionModel().clearSelection();
+    transportMethodComboBox.getSelectionModel().clearSelection();
     // departureTimeField.clear();
     departureDateField.setValue(null);
     successfulSubmitLabel.setVisible(false);
@@ -123,7 +130,7 @@ public class ExternalPatientTransportationRequestController implements Initializ
         && !destinationField.getText().trim().isEmpty()
         // && !departureTimeField.getText().trim().isEmpty()
         && !departureDateField.getText().trim().isEmpty()
-        && transportMethodCBox.getButtonCell().isSelected()) {
+        && transportMethodComboBox.getButtonCell().isSelected()) {
       submitButton.setDisable(false);
     }
   }

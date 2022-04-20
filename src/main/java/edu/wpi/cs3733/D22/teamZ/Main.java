@@ -11,14 +11,7 @@ public class Main {
       System.out.println("Success!");
       // App.launch(App.class, args);
       ExternalPatientTransportAPI api = ExternalPatientTransportAPI.getInstance();
-      api.run(
-          400,
-          400,
-          450,
-          800,
-          "@../../../../../resources/edu/wpi/cs3733/d22/teamz/styles/ServiceRequestDefault.css",
-          "Graveyard",
-          "");
+      api.run(0, 0, 450, 800, "styles/ServiceRequestDefault.css", "NYU Langone Hospital", "");
     } else {
       System.out.println("Unable to create ExternalTransportAPI table. Aborting.");
       System.exit(-1);

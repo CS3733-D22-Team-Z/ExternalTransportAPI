@@ -5,12 +5,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
 
@@ -29,14 +26,15 @@ public class App extends Application {
 
     ArrayList<String> runStrings = ExternalPatientTransportAPI.getRunArgsStrings();
 
-    Text text = new Text(1.0, 2.0, "Custom Font");
-    Font font = Font.loadFont("resources/fonts/Montserrat-Bold.ttf", 45);
-    text.setFont(font);
-    text.setFill(Color.BROWN);
-    text.setStroke(Color.BLUEVIOLET);
-    text.setStrokeWidth(0.5);
-    Parent root =
-        FXMLLoader.load(App.class.getResource("views/ExternalPatientTransportRequestList.fxml"));
+    //    Text text = new Text(1.0, 2.0, "Custom Font");
+    //    Font font = Font.loadFont("resources/fonts/Montserrat-Bold.ttf", 45);
+    //    text.setFont(font);
+    //    text.setFill(Color.BROWN);
+    //    text.setStroke(Color.BLUEVIOLET);
+    //    text.setStrokeWidth(0.5);
+    FXMLLoader loader =
+        new FXMLLoader(Main.class.getResource("views/ExternalPatientTransportRequestList.fxml"));
+    AnchorPane root = (AnchorPane) loader.load();
     Scene scene = new Scene(root);
     primaryStage.setTitle("Team Z - External Patient Transportation API");
 
@@ -45,7 +43,9 @@ public class App extends Application {
     primaryStage.setHeight(runInts.get(2));
     primaryStage.setWidth(runInts.get(3));
 
-    root.setStyle(runStrings.get(0));
+    // scene.getStylesheets().clear();
+    String cssPath = App.class.getResource(runStrings.get(0)).toExternalForm();
+    scene.getStylesheets().add(cssPath);
 
     primaryStage.getIcons().add(new Image("edu/wpi/cs3733/D22/teamZ/images/Hospital-Logo.png"));
     primaryStage.setScene(scene);

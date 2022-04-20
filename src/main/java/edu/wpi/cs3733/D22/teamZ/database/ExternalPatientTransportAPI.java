@@ -80,7 +80,7 @@ public class ExternalPatientTransportAPI {
     runArgsStrings.add(destLocationID);
     runArgsStrings.add(originLocationID);
 
-    App.launch(App.class, "");
+    App.launch(App.class);
   }
 
   public static ArrayList<Integer> getRunArgsInts() {

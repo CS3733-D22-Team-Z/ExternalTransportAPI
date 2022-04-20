@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-pref-width: 800;" stylesheets="@../styles/ServiceRequestDefault.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamZ.controllers.ExternalPatientTransportListController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-pref-width: 800;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamZ.controllers.ExternalPatientTransportListController">
    <children>
-      <Label id="FormLabel" layoutX="20.0" layoutY="14.0" prefHeight="25.0" prefWidth="300.0" styleClass="object-header" text="External Patient Transport Request List">
+      <Label id="FormLabel" fx:id="requestListLabel" layoutX="20.0" layoutY="14.0" prefHeight="25.0" prefWidth="300.0" styleClass="object-header" text="External Patient Transport Request List">
          <font>
             <Font name="Garamond" size="12.0" />
          </font>
