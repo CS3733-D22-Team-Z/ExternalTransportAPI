@@ -1,8 +1,8 @@
-package edu.wpi.cs3733.D22.teamZ.database;
+package edu.wpi.cs3733.D22.teamZ.api.database;
 
-import edu.wpi.cs3733.D22.teamZ.entity.ExternalTransportRequest;
-import edu.wpi.cs3733.D22.teamZ.entity.RequestStatus;
-import edu.wpi.cs3733.D22.teamZ.entity.TransportMethod;
+import edu.wpi.cs3733.D22.teamZ.api.entity.ExternalTransportRequest;
+import edu.wpi.cs3733.D22.teamZ.api.entity.RequestStatus;
+import edu.wpi.cs3733.D22.teamZ.api.entity.TransportMethod;
 import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;

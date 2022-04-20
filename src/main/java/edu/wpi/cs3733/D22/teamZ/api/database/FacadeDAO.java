@@ -1,6 +1,6 @@
-package edu.wpi.cs3733.D22.teamZ.database;
+package edu.wpi.cs3733.D22.teamZ.api.database;
 
-import edu.wpi.cs3733.D22.teamZ.entity.ExternalTransportRequest;
+import edu.wpi.cs3733.D22.teamZ.api.entity.ExternalTransportRequest;
 import java.io.File;
 import java.util.List;
 import lombok.NonNull;
@@ -8,14 +8,14 @@ import lombok.NonNull;
 public class FacadeDAO {
   private static final FacadeDAO instance = new FacadeDAO();
 
-  private final ExternalTransportDAOImpl externalTransportDAO;
+  private final edu.wpi.cs3733.D22.teamZ.api.database.ExternalTransportDAOImpl externalTransportDAO;
 
   public static FacadeDAO getInstance() {
     return instance;
   }
 
   private FacadeDAO() {
-    externalTransportDAO = new ExternalTransportDAOImpl();
+    externalTransportDAO = new edu.wpi.cs3733.D22.teamZ.api.database.ExternalTransportDAOImpl();
   }
 
   public List<ExternalTransportRequest> getAllExternalTransportRequests() {

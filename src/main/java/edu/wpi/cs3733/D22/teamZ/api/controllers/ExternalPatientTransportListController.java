@@ -1,10 +1,10 @@
-package edu.wpi.cs3733.D22.teamZ.controllers;
+package edu.wpi.cs3733.D22.teamZ.api.controllers;
 
-import edu.wpi.cs3733.D22.teamZ.App;
-import edu.wpi.cs3733.D22.teamZ.database.FacadeDAO;
-import edu.wpi.cs3733.D22.teamZ.entity.ExternalTransportRequest;
-import edu.wpi.cs3733.D22.teamZ.entity.RequestStatus;
-import edu.wpi.cs3733.D22.teamZ.entity.TransportMethod;
+import edu.wpi.cs3733.D22.teamZ.api.*;
+import edu.wpi.cs3733.D22.teamZ.api.database.FacadeDAO;
+import edu.wpi.cs3733.D22.teamZ.api.entity.ExternalTransportRequest;
+import edu.wpi.cs3733.D22.teamZ.api.entity.RequestStatus;
+import edu.wpi.cs3733.D22.teamZ.api.entity.TransportMethod;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import java.io.File;
 import java.io.IOException;
@@ -44,7 +44,7 @@ public class ExternalPatientTransportListController implements Initializable {
   @FXML private MFXButton labServiceRequestButton;
 
   private final String toLabServiceRequestListURL =
-      "edu/wpi/cs3733/D22/teamZ/views/LabServiceRequest.fxml";
+      "edu/wpi/cs3733/D22/teamZ/api/views/LabServiceRequest.fxml";
 
   private FacadeDAO facadeDAO;
 

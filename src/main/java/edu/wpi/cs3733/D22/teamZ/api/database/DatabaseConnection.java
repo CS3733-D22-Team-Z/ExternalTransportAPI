@@ -1,4 +1,4 @@
-package edu.wpi.cs3733.D22.teamZ.database;
+package edu.wpi.cs3733.D22.teamZ.api.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

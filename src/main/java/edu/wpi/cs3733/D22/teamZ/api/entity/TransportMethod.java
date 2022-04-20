@@ -1,4 +1,4 @@
-package edu.wpi.cs3733.D22.teamZ.entity;
+package edu.wpi.cs3733.D22.teamZ.api.entity;
 
 public enum TransportMethod {
   HELICOPTER("HELICOPTER"),

@@ -1,6 +1,6 @@
-package edu.wpi.cs3733.D22.teamZ.database;
+package edu.wpi.cs3733.D22.teamZ.api.database;
 
-import edu.wpi.cs3733.D22.teamZ.entity.ExternalTransportRequest;
+import edu.wpi.cs3733.D22.teamZ.api.entity.ExternalTransportRequest;
 import java.io.File;
 import java.io.IOException;
 import java.security.SecureRandom;

@@ -1,6 +1,6 @@
-package edu.wpi.cs3733.D22.teamZ;
+package edu.wpi.cs3733.D22.teamZ.api;
 
-import edu.wpi.cs3733.D22.teamZ.exception.ServiceException;
+import edu.wpi.cs3733.D22.teamZ.api.exception.ServiceException;
 
 public class Main {
 

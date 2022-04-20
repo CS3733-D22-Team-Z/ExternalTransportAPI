@@ -1,6 +1,6 @@
-package edu.wpi.cs3733.D22.teamZ;
+package edu.wpi.cs3733.D22.teamZ.api;
 
-import edu.wpi.cs3733.D22.teamZ.controllers.ExternalPatientTransportationRequestController;
+import edu.wpi.cs3733.D22.teamZ.api.controllers.ExternalPatientTransportationRequestController;
 import java.io.IOException;
 import java.util.List;
 import javafx.application.Application;
@@ -50,7 +50,7 @@ public class App extends Application {
     ExternalPatientTransportationRequestController.setDestinationFieldString(
         destinationFieldString);
 
-    primaryStage.getIcons().add(new Image("edu/wpi/cs3733/D22/teamZ/images/Hospital-Logo.png"));
+    primaryStage.getIcons().add(new Image("edu/wpi/cs3733/D22/teamZ/api/images/Hospital-Logo.png"));
     primaryStage.setScene(scene);
     primaryStage.show();
   }

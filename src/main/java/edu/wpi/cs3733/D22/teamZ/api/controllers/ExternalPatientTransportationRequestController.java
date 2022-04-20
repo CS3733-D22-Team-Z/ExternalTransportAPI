@@ -1,10 +1,10 @@
-package edu.wpi.cs3733.D22.teamZ.controllers;
+package edu.wpi.cs3733.D22.teamZ.api.controllers;
 
-import edu.wpi.cs3733.D22.teamZ.App;
-import edu.wpi.cs3733.D22.teamZ.database.FacadeDAO;
-import edu.wpi.cs3733.D22.teamZ.entity.ExternalTransportRequest;
-import edu.wpi.cs3733.D22.teamZ.entity.RequestStatus;
-import edu.wpi.cs3733.D22.teamZ.entity.TransportMethod;
+import edu.wpi.cs3733.D22.teamZ.api.*;
+import edu.wpi.cs3733.D22.teamZ.api.database.FacadeDAO;
+import edu.wpi.cs3733.D22.teamZ.api.entity.ExternalTransportRequest;
+import edu.wpi.cs3733.D22.teamZ.api.entity.RequestStatus;
+import edu.wpi.cs3733.D22.teamZ.api.entity.TransportMethod;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXDatePicker;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -49,7 +49,7 @@ public class ExternalPatientTransportationRequestController implements Initializ
   @FXML private MFXButton requestListButton;
 
   private final String toLandingPageURL =
-      "edu/wpi/cs3733/D22/teamZ/views/ExternalPatientTransportListController.fxml";
+      "edu/wpi/cs3733/D22/teamZ/api/views/ExternalPatientTransportListController.fxml";
 
   @Setter @NonNull private static String destinationFieldString;
 

@@ -1,4 +1,4 @@
-package edu.wpi.cs3733.D22.teamZ.entity;
+package edu.wpi.cs3733.D22.teamZ.api.entity;
 
 import java.time.LocalDate;
 import lombok.*;
@@ -17,18 +17,18 @@ public class ExternalTransportRequest {
   @NonNull @Setter private TransportMethod transportMethod;
 
   /**
-   * Sets the current handlerID for this request and updates the status accordingly.
-   * If you wish to remove a handler from this request altogether, call this method
-   * with the empty string as its parameter.
+   * Sets the current handlerID for this request and updates the status accordingly. If you wish to
+   * remove a handler from this request altogether, call this method with the empty string as its
+   * parameter.
    *
    * @param handlerID The handlerID to be set.
    */
   public void setHandlerID(@NonNull String handlerID) {
     this.handlerID = handlerID;
-    if(handlerID.equals("")) {
-      this.status = RequestStatus.UNASSIGNED;
+    if (handlerID.equals("")) {
+      this.status = edu.wpi.cs3733.D22.teamZ.api.entity.RequestStatus.UNASSIGNED;
     } else {
-      this.status = RequestStatus.PROCESSING;
+      this.status = edu.wpi.cs3733.D22.teamZ.api.entity.RequestStatus.PROCESSING;
     }
   }
 }
