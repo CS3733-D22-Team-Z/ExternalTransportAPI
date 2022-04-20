@@ -27,6 +27,15 @@ public class App extends Application {
 
   @Override
   public void start(Stage primaryStage) throws IOException {
+    staticStart(primaryStage);
+  }
+
+  @Override
+  public void stop() {
+    log.info("Shutting Down");
+  }
+
+  public static void staticStart(Stage primaryStage) throws IOException {
     FXMLLoader loader =
         new FXMLLoader(Main.class.getResource("views/ExternalPatientTransportRequestList.fxml"));
     AnchorPane root = loader.load();
@@ -53,10 +62,5 @@ public class App extends Application {
     primaryStage.getIcons().add(new Image("edu/wpi/cs3733/D22/teamZ/api/images/Hospital-Logo.png"));
     primaryStage.setScene(scene);
     primaryStage.show();
-  }
-
-  @Override
-  public void stop() {
-    log.info("Shutting Down");
   }
 }

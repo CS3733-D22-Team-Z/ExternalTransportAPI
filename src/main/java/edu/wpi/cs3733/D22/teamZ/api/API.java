@@ -5,8 +5,10 @@ import edu.wpi.cs3733.D22.teamZ.api.database.FacadeDAO;
 import edu.wpi.cs3733.D22.teamZ.api.entity.ExternalTransportRequest;
 import edu.wpi.cs3733.D22.teamZ.api.exception.ServiceException;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.stage.Stage;
 import lombok.NonNull;
 
 public class API {
@@ -59,7 +61,17 @@ public class API {
     App.setRunArgsInts(runArgsInts);
     App.setRunArgsStrings(runArgsStrings);
 
-    App.launch(App.class);
+    try {
+      App.launch(App.class);
+    } catch (Exception e) {
+      try {
+        System.out.println("Statically starting");
+        App.staticStart(new Stage());
+      } catch (IOException ex) {
+        System.out.println("API IOException on start");
+        ex.printStackTrace();
+      }
+    }
   }
 
   /**
