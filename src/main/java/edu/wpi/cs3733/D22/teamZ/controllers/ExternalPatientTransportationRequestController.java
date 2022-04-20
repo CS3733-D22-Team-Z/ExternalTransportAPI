@@ -68,7 +68,7 @@ public class ExternalPatientTransportationRequestController implements Initializ
   }
 
   @FXML
-  protected void onSubmitButtonClicked(ActionEvent event) throws SQLException {
+  protected void onSubmitButtonClicked(ActionEvent event) {
     ExternalPatientTransportAPI externalPatientTransportAPI =
         ExternalPatientTransportAPI.getInstance();
     List<ExternalTransportRequest> serviceRequestList =
@@ -111,7 +111,7 @@ public class ExternalPatientTransportationRequestController implements Initializ
   }
 
   @FXML
-  protected void onResetButtonClicked(ActionEvent event) throws IOException {
+  protected void onResetButtonClicked(ActionEvent event) {
     issuerIDField.clear();
     handlerIDField.clear();
     patientIDField.clear();
@@ -140,6 +140,9 @@ public class ExternalPatientTransportationRequestController implements Initializ
     Parent root =
         FXMLLoader.load(App.class.getResource("views/ExternalPatientTransportRequestList.fxml"));
     Scene scene = new Scene(root);
+
+    scene.getStylesheets().add(App.getCssPath());
+
     mainStage.setScene(scene);
   }
 }

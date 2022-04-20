@@ -54,6 +54,9 @@ public class ExternalPatientTransportListController implements Initializable {
     Parent root =
         FXMLLoader.load(App.class.getResource("views/ExternalPatientTransportationRequest.fxml"));
     Scene scene = new Scene(root);
+
+    scene.getStylesheets().add(App.getCssPath());
+
     mainStage.setScene(scene);
   }
 
