@@ -1,0 +1,2 @@
+requestID,status,issuerID,handlerID,patientID,transportDestination,departureDate,transportMethod
+REQ382024872,PROCESSING,69,68,1001,Graveyard,2022-04-01,HELICOPTER

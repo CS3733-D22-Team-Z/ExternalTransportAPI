@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXDatePicker?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" style="-fx-pref-width: 800;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamZ.controllers.ExternalPatientTransportationRequestController">
+    <children>
+        <MFXButton id="backButton" fx:id="requestListButton" layoutX="561.0" layoutY="311.0" onAction="#onRequestListButtonClicked" prefHeight="48.0" prefWidth="188.0" styleClass="nav-button" text="Request List" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></MFXButton>
+        <Label fx:id="titleLabel" layoutX="14.0" layoutY="63.0" prefHeight="26.0" prefWidth="463.0" styleClass="object-header" text="External Patient Transportation Request">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Label>
+        <Label fx:id="descriptionLabel" layoutX="17.0" layoutY="90.0" prefHeight="18.0" prefWidth="463.0" styleClass="object-body" text="Enter the fields below to request external patient transportation" textFill="#7b7b7b">
+         <font>
+            <Font size="9.0" />
+         </font></Label>
+        <Label fx:id="transportMethodLabel" layoutX="26.0" layoutY="252.0" prefHeight="17.0" prefWidth="158.0" styleClass="form-header" text="Transport Method" />
+        <Label fx:id="patientIdLabel" layoutX="24.0" layoutY="123.0" prefHeight="17.0" prefWidth="158.0" styleClass="form-header" text="Patient ID" />
+        <MFXTextField fx:id="patientIDField" floatMode="DISABLED" layoutX="22.0" layoutY="144.0" onKeyReleased="#validateButton" prefHeight="27.0" prefWidth="149.0" promptText="Enter patient ID" />
+        <Label fx:id="destinationLabel" layoutX="24.0" layoutY="190.0" prefHeight="17.0" prefWidth="158.0" styleClass="form-header" text="Destination" />
+        <MFXButton fx:id="submitButton" layoutX="310.0" layoutY="335.0" onAction="#onSubmitButtonClicked" prefHeight="28.0" prefWidth="79.0" styleClass="submit-button" text="Submit" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></MFXButton>
+        <MFXButton fx:id="resetButton" layoutX="402.0" layoutY="335.0" onAction="#onResetButtonClicked" prefHeight="28.0" prefWidth="75.0" styleClass="reset-button" text="Reset" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></MFXButton>
+        <Label fx:id="departureDateLabel" layoutX="326.0" layoutY="123.0" prefHeight="17.0" prefWidth="158.0" styleClass="form-header" text="Departure Date" />
+        <Label id="rejected" fx:id="errorSavingLabel" layoutX="18.0" layoutY="373.0" prefHeight="17.0" prefWidth="379.0" styleClass="error-label" text="Error saving request" />
+        <Label id="confirmed" fx:id="successfulSubmitLabel" layoutX="18.0" layoutY="373.0" prefHeight="17.0" prefWidth="379.0" styleClass="success-label" text="Successfully submitted lab request!" />
+      <MFXTextField fx:id="destinationField" floatMode="DISABLED" layoutX="22.0" layoutY="209.0" onKeyReleased="#validateButton" prefHeight="27.0" prefWidth="149.0" promptText="Enter Destination" />
+      <MFXDatePicker fx:id="departureDateField" layoutX="322.0" layoutY="141.0" prefHeight="0.0" prefWidth="150.0" />
+      <Label fx:id="issuerIDLabel" layoutX="325.0" layoutY="185.0" prefHeight="17.0" prefWidth="158.0" styleClass="form-header" text="Employee Issuer" />
+      <MFXTextField fx:id="issuerIDField" floatMode="DISABLED" layoutX="323.0" layoutY="207.0" onKeyReleased="#validateButton" prefHeight="27.0" prefWidth="149.0" promptText="Enter Employee ID" />
+      <Label fx:id="handlerIDLabel" layoutX="323.0" layoutY="255.0" prefHeight="17.0" prefWidth="158.0" styleClass="form-header" text="Employee Handler" />
+      <MFXTextField fx:id="handlerIDField" floatMode="DISABLED" layoutX="321.0" layoutY="277.0" onKeyReleased="#validateButton" prefHeight="27.0" prefWidth="149.0" promptText="Enter Employee ID" />
+      <ComboBox fx:id="transportMethodComboBox" layoutX="22.0" layoutY="278.0" prefWidth="150.0" />
+    </children>
+</AnchorPane>

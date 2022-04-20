@@ -24,15 +24,19 @@ javafx {
 
 dependencies {
     implementation(
-            'com.jfoenix:jfoenix:9.0.10',
+            'io.github.palexdev:materialfx:11.13.4',
+            'io.github.palexdev:virtualizedfx:11.2.6',
 
             // You may comment out the database dependency you do not use
             'org.xerial:sqlite-jdbc:3.30.1',
             'org.apache.derby:derby:10.14.2.0',
+            'org.apache.derby:derbyclient:10.14.2.0',
+            'org.apache.derby:derbytools:10.14.2.0',
 
             'org.slf4j:slf4j-api:1.7.30',
             'org.slf4j:slf4j-simple:1.7.30',
     )
+    implementation 'org.jetbrains:annotations:20.1.0'
 
     testCompile(
             "org.testfx:testfx-core:4.0.16-alpha",
@@ -57,6 +61,10 @@ test {
 jar {
     manifest {
         attributes 'Main-Class': mainClassName
+    }
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
 

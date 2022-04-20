@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" style="-fx-pref-width: 800;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamZ.controllers.ExternalPatientTransportListController">
+   <children>
+      <Label id="FormLabel" fx:id="requestListLabel" layoutX="20.0" layoutY="14.0" prefHeight="25.0" prefWidth="747.0" styleClass="object-header" text="External Patient Transport Request List">
+         <font>
+            <Font name="Garamond" size="12.0" />
+         </font>
+      </Label>
+      <TableView id="Locations" fx:id="externalTransportRequestTable" layoutX="20.0" layoutY="38.0" prefHeight="302.0" prefWidth="747.0">
+         <columns>
+            <TableColumn id="longname" fx:id="patientID" minWidth="0.0" prefWidth="94.99993896484375" text="Patient ID" />
+            <TableColumn id="yCoord" fx:id="status" prefWidth="47.66668510437012" text="Status" />
+            <TableColumn id="nodeID" fx:id="requestID" prefWidth="59.0" text="ID" />
+            <TableColumn id="floor" fx:id="issuer" minWidth="0.0" prefWidth="105.0" text="Issuer" />
+            <TableColumn id="building" fx:id="handler" minWidth="0.0" prefWidth="33.0" text="Handler" />
+            <TableColumn id="longname" fx:id="departureDate" minWidth="0.0" prefWidth="121.0" text="Departure" />
+            <TableColumn id="longname" fx:id="destination" minWidth="0.0" prefWidth="86.66661071777344" text="Destination" />
+            <TableColumn id="longname" fx:id="transportType" minWidth="0.0" prefWidth="94.99993896484375" text="Transport" />
+         </columns>
+         <effect>
+            <DropShadow />
+         </effect>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <MFXButton id="backButton" fx:id="labServiceRequestButton" layoutX="437.0" layoutY="357.0" mnemonicParsing="false" onAction="#toLabServiceRequest" styleClass="nav-button" text="Lab Service Request">
+      </MFXButton>
+      <MFXButton id="backButton" fx:id="exportToCSVButton" layoutX="27.0" layoutY="358.0" mnemonicParsing="false" onAction="#onExportToCSVButtonClicked" styleClass="csv-button" text="Export To CSV" />
+      <MFXButton id="backButton" fx:id="importCSVButton" layoutX="177.0" layoutY="357.0" mnemonicParsing="false" onAction="#onImportCSVButtonClicked" styleClass="csv-button" text="Import From CSV" />
+      <MFXButton id="backButton" fx:id="exitButton" layoutX="725.0" layoutY="357.0" mnemonicParsing="false" onAction="#onExitButtonPressed" styleClass="exit-button" text="Exit" />
+   </children>
+</AnchorPane>
