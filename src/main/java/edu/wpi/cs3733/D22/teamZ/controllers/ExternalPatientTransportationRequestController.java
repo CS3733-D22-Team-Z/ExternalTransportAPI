@@ -23,7 +23,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class ExternalPatientTransportationRequestController implements Initializable {
@@ -42,7 +41,6 @@ public class ExternalPatientTransportationRequestController implements Initializ
   @FXML private MFXDatePicker departureDateField;
   @FXML private Label successfulSubmitLabel;
   @FXML private Label errorSavingLabel;
-  @FXML private Rectangle warningBackground;
   @FXML private MFXTextField issuerIDField;
   @FXML private MFXTextField handlerIDField;
   @FXML private ComboBox<String> transportMethodComboBox;
@@ -56,7 +54,6 @@ public class ExternalPatientTransportationRequestController implements Initializ
     // menuName = "External Patient Transportation Request";
     errorSavingLabel.setVisible(false);
     successfulSubmitLabel.setVisible(false);
-    warningBackground.setVisible(false);
     submitButton.setDisable(true);
     transportMethodComboBox.setItems(
         FXCollections.observableArrayList("HELICOPTER", "AMBULANCE", "PATIENTCAR", "PLANE"));
@@ -90,6 +87,7 @@ public class ExternalPatientTransportationRequestController implements Initializ
     LocalDate departureDate = departureDateField.getValue();
     TransportMethod transportMethod =
         TransportMethod.fromString(transportMethodComboBox.getSelectionModel().getSelectedItem());
+    assert transportMethod != null;
     ExternalTransportRequest temp =
         new ExternalTransportRequest(
             requestID,
@@ -105,7 +103,6 @@ public class ExternalPatientTransportationRequestController implements Initializ
       successfulSubmitLabel.setVisible(true);
     } else {
       System.out.println("failed addition of patient transport request");
-      warningBackground.setVisible(true);
     }
   }
 
@@ -116,10 +113,8 @@ public class ExternalPatientTransportationRequestController implements Initializ
     patientIDField.clear();
     destinationField.clear();
     transportMethodComboBox.getSelectionModel().clearSelection();
-    // departureTimeField.clear();
     departureDateField.setValue(null);
     successfulSubmitLabel.setVisible(false);
-    warningBackground.setVisible(false);
   }
 
   @FXML
@@ -130,6 +125,8 @@ public class ExternalPatientTransportationRequestController implements Initializ
         && !departureDateField.getText().trim().isEmpty()
         && !(transportMethodComboBox.getSelectionModel().getSelectedItem() == null)) {
       submitButton.setDisable(false);
+    } else {
+      submitButton.setDisable(true);
     }
   }
 

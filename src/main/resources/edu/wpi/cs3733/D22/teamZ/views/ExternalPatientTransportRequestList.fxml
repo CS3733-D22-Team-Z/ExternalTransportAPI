@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-pref-width: 800;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamZ.controllers.ExternalPatientTransportListController">
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" style="-fx-pref-width: 800;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamZ.controllers.ExternalPatientTransportListController">
    <children>
-      <Label id="FormLabel" fx:id="requestListLabel" layoutX="20.0" layoutY="14.0" prefHeight="25.0" prefWidth="300.0" styleClass="object-header" text="External Patient Transport Request List">
+      <Label id="FormLabel" fx:id="requestListLabel" layoutX="20.0" layoutY="14.0" prefHeight="25.0" prefWidth="747.0" styleClass="object-header" text="External Patient Transport Request List">
          <font>
             <Font name="Garamond" size="12.0" />
          </font>
@@ -33,10 +33,10 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <MFXButton id="backButton" fx:id="labServiceRequestButton" layoutX="437.0" layoutY="357.0" mnemonicParsing="false" onAction="#toLabServiceRequest" text="Lab Service Request">
+      <MFXButton id="backButton" fx:id="labServiceRequestButton" layoutX="437.0" layoutY="357.0" mnemonicParsing="false" onAction="#toLabServiceRequest" styleClass="nav-button" text="Lab Service Request">
       </MFXButton>
-      <MFXButton id="backButton" fx:id="exportToCSVButton" layoutX="27.0" layoutY="358.0" mnemonicParsing="false" onAction="#onExportToCSVButtonClicked" style="-fx-background-color: #9f9f9f;" text="Export To CSV" />
-      <MFXButton id="backButton" fx:id="importCSVButton" layoutX="177.0" layoutY="357.0" mnemonicParsing="false" onAction="#onImportCSVButtonClicked" style="-fx-background-color: #9f9f9f;" text="Import From CSV" />
-      <MFXButton id="backButton" fx:id="exitButton" layoutX="725.0" layoutY="357.0" mnemonicParsing="false" onAction="#onExitButtonPressed" style="-fx-background-color: #ff1111;" text="Exit" />
+      <MFXButton id="backButton" fx:id="exportToCSVButton" layoutX="27.0" layoutY="358.0" mnemonicParsing="false" onAction="#onExportToCSVButtonClicked" styleClass="csv-button" text="Export To CSV" />
+      <MFXButton id="backButton" fx:id="importCSVButton" layoutX="177.0" layoutY="357.0" mnemonicParsing="false" onAction="#onImportCSVButtonClicked" styleClass="csv-button" text="Import From CSV" />
+      <MFXButton id="backButton" fx:id="exitButton" layoutX="725.0" layoutY="357.0" mnemonicParsing="false" onAction="#onExitButtonPressed" styleClass="exit-button" text="Exit" />
    </children>
 </AnchorPane>
