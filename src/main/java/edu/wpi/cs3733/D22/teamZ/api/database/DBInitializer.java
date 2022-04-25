@@ -10,7 +10,7 @@ public class DBInitializer {
 
   public boolean createTable() {
     if (connection == null) {
-      System.out.println("API database connection is null.");
+      // System.out.println("API database connection is null.");
       return false;
     }
 
@@ -18,7 +18,7 @@ public class DBInitializer {
     try {
       stmt = connection.createStatement();
     } catch (SQLException e) {
-      System.out.println("Failed to access API database.");
+      // System.out.println("Failed to access API database.");
       return false;
     }
 
@@ -41,8 +41,8 @@ public class DBInitializer {
               + "transportMethod VARCHAR(20),"
               + "constraint TRANSPORTREQUEST_PK PRIMARY KEY (requestID))");
     } catch (SQLException e) {
-      System.out.println("Failed to create ExternalTransport API table.");
-      e.printStackTrace();
+      // System.out.println("Failed to create ExternalTransport API table.");
+      // e.printStackTrace();
       return false;
     }
 

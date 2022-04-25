@@ -53,9 +53,9 @@ public class App extends Application {
     primaryStage.setResizable(false);
 
     // scene.getStylesheets().clear();
-    URL cssURL = App.class.getResource(runArgsStrings.get(0));
+    URL cssURL = App.class.getClassLoader().getResource(runArgsStrings.get(0));
     if (cssURL != null) {
-      cssPath = App.class.getResource(runArgsStrings.get(0)).toExternalForm();
+      cssPath = cssURL.toExternalForm();
     } else {
       throw new IOException();
     }
@@ -67,6 +67,6 @@ public class App extends Application {
 
     primaryStage.getIcons().add(new Image("edu/wpi/cs3733/D22/teamZ/api/images/Hospital-Logo.png"));
     primaryStage.setScene(scene);
-    primaryStage.show();
+    primaryStage.showAndWait();
   }
 }
