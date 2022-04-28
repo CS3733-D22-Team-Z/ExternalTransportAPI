@@ -41,7 +41,7 @@ public class ExternalPatientTransportListController implements Initializable {
   @FXML private TableColumn<ExternalTransportRequest, LocalDate> departureDate;
   @FXML private TableColumn<ExternalTransportRequest, String> destination;
   @FXML private TableColumn<ExternalTransportRequest, TransportMethod> transportType;
-  @FXML private MFXButton labServiceRequestButton;
+  @FXML private MFXButton serviceRequestButton;
 
   private final String toLabServiceRequestListURL =
       "edu/wpi/cs3733/D22/teamZ/api/views/LabServiceRequest.fxml";
@@ -49,8 +49,8 @@ public class ExternalPatientTransportListController implements Initializable {
   private FacadeDAO facadeDAO;
 
   @FXML
-  private void toLabServiceRequest(ActionEvent event) throws IOException {
-    Stage mainStage = (Stage) labServiceRequestButton.getScene().getWindow();
+  private void toExternalTransportServiceRequest(ActionEvent event) throws IOException {
+    Stage mainStage = (Stage) serviceRequestButton.getScene().getWindow();
     Parent root =
         FXMLLoader.load(App.class.getResource("views/ExternalPatientTransportationRequest.fxml"));
     Scene scene = new Scene(root);

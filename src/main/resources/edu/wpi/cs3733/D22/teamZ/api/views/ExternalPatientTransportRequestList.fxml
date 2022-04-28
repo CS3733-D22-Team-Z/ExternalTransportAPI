@@ -33,7 +33,7 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <MFXButton id="backButton" fx:id="labServiceRequestButton" layoutX="437.0" layoutY="357.0" mnemonicParsing="false" onAction="#toLabServiceRequest" styleClass="nav-button" text="Lab Service Request">
+      <MFXButton id="backButton" fx:id="serviceRequestButton" layoutX="437.0" layoutY="357.0" mnemonicParsing="false" onAction="#toExternalTransportServiceRequest" styleClass="nav-button" text="Create Service Request">
       </MFXButton>
       <MFXButton id="backButton" fx:id="exportToCSVButton" layoutX="27.0" layoutY="358.0" mnemonicParsing="false" onAction="#onExportToCSVButtonClicked" styleClass="csv-button" text="Export To CSV" />
       <MFXButton id="backButton" fx:id="importCSVButton" layoutX="177.0" layoutY="357.0" mnemonicParsing="false" onAction="#onImportCSVButtonClicked" styleClass="csv-button" text="Import From CSV" />
