@@ -65,10 +65,8 @@ public class API {
       App.launch(App.class);
     } catch (Exception e) {
       try {
-        System.out.println("Statically starting");
         App.staticStart(new Stage());
       } catch (IOException ex) {
-        System.out.println("API IOException on start");
         throw new ServiceException("The css path given could not be found");
       }
     }
